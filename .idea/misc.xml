@@ -3,7 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/ornekler/ITunesApplication/app/src/main/res/drawable/button_background.xml" value="0.2703125" />
         <entry key="..\:/ornekler/ITunesApplication/app/src/main/res/layout/activity_main.xml" value="0.1793478260869565" />
+        <entry key="..\:/ornekler/ITunesApplication/app/src/main/res/layout/fragment_search.xml" value="0.176" />
+        <entry key="..\:/ornekler/ITunesApplication/app/src/main/res/layout/item_data.xml" value="0.1793478260869565" />
+        <entry key="..\:/ornekler/ITunesApplication/app/src/main/res/layout/item_media_type.xml" value="0.1793478260869565" />
       </map>
     </option>
   </component>

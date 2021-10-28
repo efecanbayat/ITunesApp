@@ -5,5 +5,7 @@ import javax.inject.Inject
 
 class RemoteDataSource @Inject constructor(private val apiService: APIService) : BaseDataSource() {
 
-
+    suspend fun getDataByQuery(query: String, mediaType: String?) = getResult {
+        apiService.getDataByQuery(query, mediaType)
+    }
 }
