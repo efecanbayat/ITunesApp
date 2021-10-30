@@ -8,4 +8,8 @@ class RemoteDataSource @Inject constructor(private val apiService: APIService) :
     suspend fun getDataByQuery(query: String, mediaType: String?) = getResult {
         apiService.getDataByQuery(query, mediaType)
     }
+
+    suspend fun getDetailById(id: String?) = getResult {
+        apiService.getDetailById(id)
+    }
 }

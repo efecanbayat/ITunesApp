@@ -28,7 +28,7 @@ class DataListAdapter : RecyclerView.Adapter<DataListAdapter.DataListViewHolder>
         holder.binding.apply {
             nameTextView.text = data.collectionName ?: data.trackName
             dateTextView.text = data.releaseDate?.substring(0,10)
-            priceTextView.text = if(data.collectionPrice != null) "${data.collectionPrice} $" else if(data.price != null) "${data.price} $" else "Price not found"
+            priceTextView.text = if(data.collectionPrice != null) "\$${data.collectionPrice}" else if(data.price != null) "\$${data.price}" else "Price not found"
             Glide.with(itemImageView.context)
                 .load(data.artworkUrl100)
                 .placeholder(R.drawable.placeholder)

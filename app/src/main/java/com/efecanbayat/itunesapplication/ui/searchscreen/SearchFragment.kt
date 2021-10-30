@@ -5,6 +5,7 @@ import android.view.View
 import android.widget.Toast
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.efecanbayat.itunesapplication.R
 import com.efecanbayat.itunesapplication.base.BaseFragment
 import com.efecanbayat.itunesapplication.data.entity.DataList
@@ -66,6 +67,15 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(FragmentSearchBinding
                 viewModel.mediaType = mediaType.mediaTypeName.lowercase()
                 fetchSearchData(binding.searchView.query.toString())
             }
+        })
+
+        dataListAdapter.addListener(object : IDataOnClickListener {
+            override fun onClick(dataList: DataList) {
+                val action = SearchFragmentDirections.actionSearchFragmentToDetailFragment(dataList.trackId)
+                findNavController().navigate(action)
+                dataListAdapter.removeListener()
+            }
+
         })
     }
 

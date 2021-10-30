@@ -12,4 +12,9 @@ interface APIService {
         @Query("term") term: String,
         @Query("media") media: String?
     ): Response<BaseResponse>
+
+    @GET("lookup?")
+    suspend fun getDetailById(
+        @Query("id") id: String?
+    ): Response<BaseResponse>
 }
