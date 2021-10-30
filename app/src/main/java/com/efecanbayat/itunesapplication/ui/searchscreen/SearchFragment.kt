@@ -24,9 +24,6 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(FragmentSearchBinding
     private val mediaTypeAdapter by lazy { MediaTypeAdapter() }
     private val dataListAdapter by lazy { DataListAdapter() }
 
-//    private var limit = 20
-//    private lateinit var query: String
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initAdapters()
