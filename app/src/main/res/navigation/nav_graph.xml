@@ -28,4 +28,9 @@
             app:argType="string"
             app:nullable="true" />
     </fragment>
+    <fragment
+        tools:layout="@layout/fragment_favorite_list"
+        android:id="@+id/favoriteListFragment"
+        android:name="com.efecanbayat.itunesapplication.ui.favoritescreen.list.FavoriteListFragment"
+        android:label="FavoriteListFragment" />
 </navigation>

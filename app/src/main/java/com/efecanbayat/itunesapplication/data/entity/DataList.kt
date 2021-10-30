@@ -4,7 +4,7 @@ import com.google.gson.annotations.SerializedName
 
 data class DataList(
     @SerializedName("trackId")
-    val trackId: String?,
+    val trackId: String,
     @SerializedName("artworkUrl100")
     val artworkUrl100: String?,
     @SerializedName("trackName")
@@ -24,5 +24,5 @@ data class DataList(
     @SerializedName("price")
     val price: String?,
     @SerializedName("collectionName")
-    val collectionName: String?,
+    val collectionName: String?
 )
