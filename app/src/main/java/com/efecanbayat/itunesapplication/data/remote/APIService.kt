@@ -7,10 +7,11 @@ import retrofit2.http.Query
 
 interface APIService {
 
-    @GET("search?limit=20")
+    @GET("search?")
     suspend fun getDataByQuery(
         @Query("term") term: String,
-        @Query("media") media: String?
+        @Query("media") media: String?,
+        @Query("limit") limit: Int
     ): Response<BaseResponse>
 
     @GET("lookup?")

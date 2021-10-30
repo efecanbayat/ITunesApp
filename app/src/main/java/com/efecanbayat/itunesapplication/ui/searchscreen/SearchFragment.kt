@@ -1,11 +1,13 @@
 package com.efecanbayat.itunesapplication.ui.searchscreen
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.RecyclerView
 import com.efecanbayat.itunesapplication.R
 import com.efecanbayat.itunesapplication.base.BaseFragment
 import com.efecanbayat.itunesapplication.data.entity.DataList
@@ -22,6 +24,10 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(FragmentSearchBinding
     private val viewModel: SearchViewModel by viewModels()
     private val mediaTypeAdapter = MediaTypeAdapter()
     private val dataListAdapter = DataListAdapter()
+
+    private var limit = 20
+    private lateinit var query: String
+    private var responseListSize = 0
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -56,7 +62,10 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(FragmentSearchBinding
                     binding.notFoundTextView.gone()
                     dataListAdapter.setDataList(arrayListOf())
                 } else {
-                    fetchSearchData(newText!!)
+                    query = newText!!
+                    limit = 20
+                    viewModel.dataList?.clear()
+                    fetchSearchData(query, limit)
                 }
                 return true
             }
@@ -65,24 +74,38 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(FragmentSearchBinding
         mediaTypeAdapter.addListener(object : IMediaTypeOnClickListener {
             override fun onClick(mediaType: MediaType) {
                 viewModel.mediaType = mediaType.mediaTypeName.lowercase()
-                fetchSearchData(binding.searchView.query.toString())
+                limit = 20
+                viewModel.dataList?.clear()
+                fetchSearchData(binding.searchView.query.toString(), limit)
             }
         })
 
         dataListAdapter.addListener(object : IDataOnClickListener {
             override fun onClick(dataList: DataList) {
-                val action = SearchFragmentDirections.actionSearchFragmentToDetailFragment(dataList.trackId)
+                val action =
+                    SearchFragmentDirections.actionSearchFragmentToDetailFragment(dataList.trackId)
                 findNavController().navigate(action)
                 dataListAdapter.removeListener()
             }
+        })
 
+        binding.dataRecyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+            override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
+                super.onScrollStateChanged(recyclerView, newState)
+                if (!binding.dataRecyclerView.canScrollVertically(1) &&
+                    newState == RecyclerView.SCROLL_STATE_IDLE
+                ) {
+                    limit += 20
+                    fetchSearchData(query, limit)
+                }
+            }
         })
     }
 
-    private fun fetchSearchData(query: String) {
+    private fun fetchSearchData(query: String, limit: Int) {
 
         if (query.length > 2) {
-            viewModel.getDataByQuery(query).observe(viewLifecycleOwner, { response ->
+            viewModel.getDataByQuery(query, limit).observe(viewLifecycleOwner, { response ->
                 when (response.status) {
                     Resource.Status.LOADING -> {
                         binding.loadingAnimation.show()
@@ -95,9 +118,23 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(FragmentSearchBinding
                         binding.notFoundTextView.gone()
 
                         if (response.data?.resultCount != 0) {
-                            viewModel.dataList = response.data?.results
-                            setData(viewModel.dataList)
-                            binding.dataRecyclerView.adapter = dataListAdapter
+                            responseListSize = response.data?.resultCount!!
+                            Log.d("SearchFragment", "limit" + limit.toString())
+                            Log.d(
+                                "SearchFragment",
+                                "responseListSize" + responseListSize.toString()
+                            )
+
+                            if (responseListSize > viewModel.dataList!!.size) {
+                                viewModel.dataList = response.data.results
+                                Log.d(
+                                    "SearchFragment",
+                                    "viewmodelListSize" + viewModel.dataList!!.size.toString()
+                                )
+                                setData(viewModel.dataList)
+                                binding.dataRecyclerView.adapter = dataListAdapter
+                                binding.dataRecyclerView.scrollToPosition(responseListSize - 20)
+                            }
                         } else {
                             binding.dataRecyclerView.gone()
                             binding.notFoundTextView.show()

@@ -8,8 +8,8 @@ class ApiRepository @Inject constructor(
     private var remoteDataSource: RemoteDataSource
 ) {
 
-    fun getDataByQuery(query: String, mediaType: String?) = performNetworkOperation {
-        remoteDataSource.getDataByQuery(query, mediaType)
+    fun getDataByQuery(query: String, mediaType: String?, limit: Int) = performNetworkOperation {
+        remoteDataSource.getDataByQuery(query, mediaType, limit)
     }
 
     fun getDetailById(id: String?) = performNetworkOperation {

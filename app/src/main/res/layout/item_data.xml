@@ -14,14 +14,31 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <androidx.appcompat.widget.AppCompatImageView
+        <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/itemImageView"
-            android:layout_width="match_parent"
+            android:layout_width="120dp"
             android:layout_height="120dp"
-            android:scaleType="fitCenter"
+            android:scaleType="centerCrop"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:shapeAppearanceOverlay="@style/roundedImageViewRounded"
+            app:strokeColor="@color/white"
+            app:strokeWidth="1dp" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/dateTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/open_sans"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="13sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/itemImageView"
+            tools:text="2021-10-28" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/nameTextView"
@@ -37,20 +54,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/dateTextView"
             tools:text="Data Name" />
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/dateTextView"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:fontFamily="@font/open_sans"
-            android:textAlignment="center"
-            android:textColor="@color/black"
-            android:textSize="13sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/itemImageView"
-            tools:text="2021-10-28" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/priceTextView"
@@ -69,5 +72,4 @@
             tools:text="$500" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 </androidx.cardview.widget.CardView>
