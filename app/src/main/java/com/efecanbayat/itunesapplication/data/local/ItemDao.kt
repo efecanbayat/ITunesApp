@@ -5,17 +5,16 @@ import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
 import com.efecanbayat.itunesapplication.data.entity.DataList
-import com.efecanbayat.itunesapplication.data.entity.RoomDataList
 
 @Dao
 interface ItemDao {
 
     @Query("SELECT * FROM item")
-    fun getFavoriteItems(): List<RoomDataList>
+    fun getFavoriteItems(): List<DataList>
 
     @Insert
-    fun addFavoriteItem(item: RoomDataList?)
+    fun addFavoriteItem(item: DataList?)
 
     @Delete
-    fun deleteFavoriteItem(item: RoomDataList?)
+    fun deleteFavoriteItem(item: DataList?)
 }

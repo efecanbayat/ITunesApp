@@ -1,6 +1,6 @@
 package com.efecanbayat.itunesapplication.data.local
 
-import com.efecanbayat.itunesapplication.data.entity.RoomDataList
+import com.efecanbayat.itunesapplication.data.entity.DataList
 import javax.inject.Inject
 
 class LocalDataSource @Inject constructor(
@@ -8,15 +8,15 @@ class LocalDataSource @Inject constructor(
     private val itemDao: ItemDao
 ) {
 
-    fun getFavoriteItems(): List<RoomDataList> {
+    fun getFavoriteItems(): List<DataList> {
         return itemDao.getFavoriteItems()
     }
 
-    fun addFavoriteItem(item: RoomDataList) {
+    fun addFavoriteItem(item: DataList) {
         itemDao.addFavoriteItem(item)
     }
 
-    fun deleteFavoriteItem(item: RoomDataList) {
+    fun deleteFavoriteItem(item: DataList) {
         itemDao.deleteFavoriteItem(item)
     }
 }

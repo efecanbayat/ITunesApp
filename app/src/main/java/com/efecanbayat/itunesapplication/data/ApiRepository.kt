@@ -1,7 +1,6 @@
 package com.efecanbayat.itunesapplication.data
 
 import com.efecanbayat.itunesapplication.data.entity.DataList
-import com.efecanbayat.itunesapplication.data.entity.RoomDataList
 import com.efecanbayat.itunesapplication.data.local.LocalDataSource
 import com.efecanbayat.itunesapplication.data.remote.RemoteDataSource
 import com.efecanbayat.itunesapplication.utils.performNetworkOperation
@@ -22,7 +21,7 @@ class ApiRepository @Inject constructor(
 
     fun getFavoriteItems() = localDataSource.getFavoriteItems()
 
-    fun addFavoriteItem(item: RoomDataList) = localDataSource.addFavoriteItem(item)
+    fun addFavoriteItem(item: DataList) = localDataSource.addFavoriteItem(item)
 
-    fun deleteFavoriteItem(item: RoomDataList) = localDataSource.deleteFavoriteItem(item)
+    fun deleteFavoriteItem(item: DataList) = localDataSource.deleteFavoriteItem(item)
 }
