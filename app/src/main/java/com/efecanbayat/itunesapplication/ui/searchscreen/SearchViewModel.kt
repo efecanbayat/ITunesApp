@@ -17,6 +17,9 @@ class SearchViewModel @Inject constructor(
     var dataList: ArrayList<DataList>? = arrayListOf()
     var mediaType: String? = "movie"
 
+    var limit = 20
+    var query = ""
+
     fun getDataByQuery(query: String, limit: Int): LiveData<Resource<BaseResponse>> {
         return apiRepository.getDataByQuery(query, mediaType, limit)
     }
