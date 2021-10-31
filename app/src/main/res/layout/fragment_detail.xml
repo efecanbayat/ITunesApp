@@ -37,22 +37,27 @@
             android:layout_height="36dp"
             android:layout_marginTop="12dp"
             android:layout_marginEnd="8dp"
-            android:background="@android:color/transparent"
             android:tint="@color/black"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:src="@drawable/ic_favorite" />
 
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/detailImageView"
+        <androidx.cardview.widget.CardView
+            android:id="@+id/detailImageCardView"
             android:layout_width="240dp"
             android:layout_height="220dp"
-            android:layout_margin="16dp"
-            android:scaleType="fitXY"
-            android:src="@mipmap/ic_launcher"
+            android:layout_marginTop="16dp"
+            app:cardCornerRadius="12dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/detailImageView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="fitXY" />
+        </androidx.cardview.widget.CardView>
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/detailDateTextView"
@@ -65,7 +70,7 @@
             android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/detailImageView"
+            app:layout_constraintTop_toBottomOf="@+id/detailImageCardView"
             tools:text="2021-10-30" />
 
         <LinearLayout
@@ -105,9 +110,9 @@
 
                 <androidx.core.widget.NestedScrollView
                     android:id="@+id/scrollView"
-                    android:overScrollMode="never"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:overScrollMode="never">
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/detailDescriptionTextView"

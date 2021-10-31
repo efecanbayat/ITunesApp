@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/itemCardView"
     android:layout_width="match_parent"
-    android:layout_height="120dp"
+    android:layout_height="125dp"
     android:layout_margin="4dp"
     app:cardCornerRadius="12dp">
 
@@ -13,14 +13,22 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/itemImageView"
+        <androidx.cardview.widget.CardView
+            android:id="@+id/imageCardView"
             android:layout_width="125dp"
             android:layout_height="125dp"
-            android:scaleType="fitXY"
+            app:cardCornerRadius="12dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@id/itemImageView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="fitXY" />
+        </androidx.cardview.widget.CardView>
+
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/dateTextView"
@@ -32,7 +40,7 @@
             android:textColor="@color/black"
             android:textSize="13sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/itemImageView"
+            app:layout_constraintStart_toEndOf="@+id/imageCardView"
             app:layout_constraintTop_toBottomOf="@id/nameTextView"
             tools:text="2021-10-28" />
 
@@ -49,7 +57,7 @@
             android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/itemImageView"
+            app:layout_constraintStart_toEndOf="@+id/imageCardView"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="Data Name" />
 
@@ -64,7 +72,7 @@
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/itemImageView"
+            app:layout_constraintStart_toEndOf="@+id/imageCardView"
             tools:text="$500" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
