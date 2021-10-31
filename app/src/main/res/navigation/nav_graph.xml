@@ -31,6 +31,14 @@
     <fragment
         tools:layout="@layout/fragment_favorite_list"
         android:id="@+id/favoriteListFragment"
-        android:name="com.efecanbayat.itunesapplication.ui.favoritescreen.list.FavoriteListFragment"
-        android:label="FavoriteListFragment" />
+        android:name="com.efecanbayat.itunesapplication.ui.favoritescreen.FavoriteListFragment"
+        android:label="FavoriteListFragment" >
+        <action
+            android:id="@+id/action_favoriteListFragment_to_detailFragment"
+            app:destination="@id/detailFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right"
+            app:popEnterAnim="@android:anim/slide_in_left"
+            app:popExitAnim="@android:anim/slide_out_right" />
+    </fragment>
 </navigation>

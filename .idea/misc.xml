@@ -12,9 +12,11 @@
         <entry key="..\:/ornekler/ITunesApplication/app/src/main/res/drawable/second_radius_background.xml" value="0.2703125" />
         <entry key="..\:/ornekler/ITunesApplication/app/src/main/res/layout/activity_main.xml" value="0.1793478260869565" />
         <entry key="..\:/ornekler/ITunesApplication/app/src/main/res/layout/fragment_detail.xml" value="0.2223731884057971" />
+        <entry key="..\:/ornekler/ITunesApplication/app/src/main/res/layout/fragment_favorite_detail.xml" value="0.36666666666666664" />
         <entry key="..\:/ornekler/ITunesApplication/app/src/main/res/layout/fragment_favorite_list.xml" value="0.36666666666666664" />
         <entry key="..\:/ornekler/ITunesApplication/app/src/main/res/layout/fragment_search.xml" value="0.4" />
         <entry key="..\:/ornekler/ITunesApplication/app/src/main/res/layout/item_data.xml" value="0.1793478260869565" />
+        <entry key="..\:/ornekler/ITunesApplication/app/src/main/res/layout/item_favorite.xml" value="0.36666666666666664" />
         <entry key="..\:/ornekler/ITunesApplication/app/src/main/res/layout/item_media_type.xml" value="0.1793478260869565" />
         <entry key="..\:/ornekler/ITunesApplication/app/src/main/res/menu/bottom_menu.xml" value="0.25416666666666665" />
       </map>

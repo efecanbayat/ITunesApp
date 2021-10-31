@@ -1,4 +1,4 @@
-package com.efecanbayat.itunesapplication.ui.favoritescreen.list
+package com.efecanbayat.itunesapplication.ui.favoritescreen
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
@@ -8,6 +8,7 @@ import com.bumptech.glide.Glide
 import com.efecanbayat.itunesapplication.R
 import com.efecanbayat.itunesapplication.data.entity.DataList
 import com.efecanbayat.itunesapplication.databinding.ItemDataBinding
+import com.efecanbayat.itunesapplication.databinding.ItemFavoriteBinding
 import com.efecanbayat.itunesapplication.ui.searchscreen.IDataOnClickListener
 
 class FavoriteListAdapter : RecyclerView.Adapter<FavoriteListAdapter.FavoriteListViewHolder>() {
@@ -15,12 +16,12 @@ class FavoriteListAdapter : RecyclerView.Adapter<FavoriteListAdapter.FavoriteLis
     private var favoriteList = ArrayList<DataList>()
     private var listener: IDataOnClickListener? = null
 
-    inner class FavoriteListViewHolder(val binding: ItemDataBinding) :
+    inner class FavoriteListViewHolder(val binding: ItemFavoriteBinding) :
         RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FavoriteListViewHolder {
         val binding =
-            ItemDataBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+            ItemFavoriteBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return FavoriteListViewHolder(binding)
     }
 
@@ -28,7 +29,7 @@ class FavoriteListAdapter : RecyclerView.Adapter<FavoriteListAdapter.FavoriteLis
         val favoriteItem = favoriteList[position]
 
         holder.binding.apply {
-            nameTextView.text = favoriteItem.collectionName ?: favoriteItem.trackName
+            nameTextView.text = favoriteItem.trackName ?: favoriteItem.collectionName
             dateTextView.text = favoriteItem.releaseDate?.substring(0, 10)
             priceTextView.text =
                 if (favoriteItem.collectionPrice != null) "\$${favoriteItem.collectionPrice}" else if (favoriteItem.price != null) "\$${favoriteItem.price}" else "Price not found"

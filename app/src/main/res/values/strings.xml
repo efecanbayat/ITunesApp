@@ -4,4 +4,6 @@
     <string name="itunes">iTunes</string>
     <string name="home">Home</string>
     <string name="favorite">Favorite</string>
+    <string name="favorites">Favorites</string>
+    <string name="you_don_t_have_favorite_items">You don\'t have favorite items</string>
 </resources>

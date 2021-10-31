@@ -59,7 +59,7 @@ class DetailFragment : BaseFragment<FragmentDetailBinding>(FragmentDetailBinding
                             .into(detailImageView)
 
                         detailDateTextView.text = detailItem.releaseDate?.substring(0, 10)
-                        detailNameTextView.text = detailItem.collectionName ?: detailItem.trackName
+                        detailNameTextView.text = detailItem.trackName ?: detailItem.collectionName
                         detailDescriptionTextView.text =
                             when {
                                 detailItem.longDescription != null -> HtmlCompat.fromHtml(

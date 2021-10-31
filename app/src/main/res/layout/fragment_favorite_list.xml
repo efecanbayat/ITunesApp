@@ -6,18 +6,47 @@
     android:layout_height="match_parent"
     android:padding="8dp">
 
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/favoriteTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/open_sans"
+        android:text="@string/favorites"
+        android:textColor="@color/blue"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/favoriteRecyclerView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
         android:overScrollMode="never"
-        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="parent"
-        app:spanCount="2"
+        app:layout_constraintTop_toBottomOf="@+id/favoriteTextView"
         tools:itemCount="4"
-        tools:listitem="@layout/item_data" />
+        tools:listitem="@layout/item_favorite" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/messageTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/open_sans"
+        android:text="@string/you_don_t_have_favorite_items"
+        android:textAlignment="center"
+        android:textColor="@color/blue"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/favoriteRecyclerView"
+        app:layout_constraintEnd_toEndOf="@+id/favoriteRecyclerView"
+        app:layout_constraintStart_toStartOf="@+id/favoriteRecyclerView"
+        app:layout_constraintTop_toTopOf="@+id/favoriteRecyclerView" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
