@@ -1,4 +1,4 @@
-# ITunesApplication
+# iTunesApplication
 
 
 ## About this project
