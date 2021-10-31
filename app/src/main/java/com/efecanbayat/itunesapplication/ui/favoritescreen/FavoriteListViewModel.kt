@@ -1,4 +1,4 @@
-package com.efecanbayat.itunesapplication.ui.favoritescreen.list
+package com.efecanbayat.itunesapplication.ui.favoritescreen
 
 import androidx.lifecycle.ViewModel
 import com.efecanbayat.itunesapplication.data.ApiRepository
