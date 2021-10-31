@@ -1,0 +1,17 @@
+{
+  "resultCount": 1,
+  "results": [
+    {
+      "kind": "feature-movie",
+      "trackId": 1576781847,
+      "artistName": "Justin Lin",
+      "collectionName": "Fast & Furious 9-Movie Collection",
+      "trackName": "F9: The Fast Saga",
+      "artworkUrl100": "https://is4-ssl.mzstatic.com/image/thumb/Video125/v4/97/3f/e5/973fe530-494f-e51f-c3f6-f17994faf178/pr_source.lsr/100x100bb.jpg",
+      "collectionPrice": 79.99,
+      "price": 79.99,
+      "releaseDate": "2021-06-25T07:00:00Z",
+      "currency": "USD"
+    }
+  ]
+}
