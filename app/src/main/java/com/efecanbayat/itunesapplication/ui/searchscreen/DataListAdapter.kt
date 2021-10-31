@@ -1,6 +1,7 @@
 package com.efecanbayat.itunesapplication.ui.searchscreen
 
 import android.annotation.SuppressLint
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -8,6 +9,7 @@ import com.bumptech.glide.Glide
 import com.efecanbayat.itunesapplication.R
 import com.efecanbayat.itunesapplication.data.entity.DataList
 import com.efecanbayat.itunesapplication.databinding.ItemDataBinding
+import com.efecanbayat.itunesapplication.utils.ImageSizeHelper
 
 class DataListAdapter : RecyclerView.Adapter<DataListAdapter.DataListViewHolder>() {
 
@@ -24,13 +26,15 @@ class DataListAdapter : RecyclerView.Adapter<DataListAdapter.DataListViewHolder>
 
     override fun onBindViewHolder(holder: DataListViewHolder, position: Int) {
         val data = dataList[position]
+        val resizedImage = ImageSizeHelper.imageSizeChanger300(data.artworkUrl100!!)
 
         holder.binding.apply {
             nameTextView.text = data.trackName ?: data.collectionName
             dateTextView.text = data.releaseDate?.substring(0,10)
+
             priceTextView.text = if(data.collectionPrice != null) "\$${data.collectionPrice}" else if(data.price != null) "\$${data.price}" else "Price not found"
             Glide.with(itemImageView.context)
-                .load(data.artworkUrl100)
+                .load(resizedImage)
                 .placeholder(R.drawable.placeholder)
                 .error(R.drawable.placeholder)
                 .into(itemImageView)

@@ -13,6 +13,7 @@ import com.efecanbayat.itunesapplication.R
 import com.efecanbayat.itunesapplication.base.BaseFragment
 import com.efecanbayat.itunesapplication.data.entity.DataList
 import com.efecanbayat.itunesapplication.databinding.FragmentDetailBinding
+import com.efecanbayat.itunesapplication.utils.ImageSizeHelper
 import com.efecanbayat.itunesapplication.utils.Resource
 import com.efecanbayat.itunesapplication.utils.gone
 import com.efecanbayat.itunesapplication.utils.show
@@ -53,9 +54,9 @@ class DetailFragment : BaseFragment<FragmentDetailBinding>(FragmentDetailBinding
                         for (item in data!!){
                             detailItem = item
                         }
-
+                        val resizedImage = ImageSizeHelper.imageSizeChanger400(detailItem.artworkUrl100!!)
                         Glide.with(requireContext())
-                            .load(detailItem.artworkUrl100)
+                            .load(resizedImage)
                             .into(detailImageView)
 
                         detailDateTextView.text = detailItem.releaseDate?.substring(0, 10)

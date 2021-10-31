@@ -10,6 +10,7 @@ import com.efecanbayat.itunesapplication.data.entity.DataList
 import com.efecanbayat.itunesapplication.databinding.ItemDataBinding
 import com.efecanbayat.itunesapplication.databinding.ItemFavoriteBinding
 import com.efecanbayat.itunesapplication.ui.searchscreen.IDataOnClickListener
+import com.efecanbayat.itunesapplication.utils.ImageSizeHelper
 
 class FavoriteListAdapter : RecyclerView.Adapter<FavoriteListAdapter.FavoriteListViewHolder>() {
 
@@ -33,8 +34,10 @@ class FavoriteListAdapter : RecyclerView.Adapter<FavoriteListAdapter.FavoriteLis
             dateTextView.text = favoriteItem.releaseDate?.substring(0, 10)
             priceTextView.text =
                 if (favoriteItem.collectionPrice != null) "\$${favoriteItem.collectionPrice}" else if (favoriteItem.price != null) "\$${favoriteItem.price}" else "Price not found"
+
+            val resizedImage = ImageSizeHelper.imageSizeChanger300(favoriteItem.artworkUrl100!!)
             Glide.with(itemImageView.context)
-                .load(favoriteItem.artworkUrl100)
+                .load(resizedImage)
                 .placeholder(R.drawable.placeholder)
                 .error(R.drawable.placeholder)
                 .into(itemImageView)
